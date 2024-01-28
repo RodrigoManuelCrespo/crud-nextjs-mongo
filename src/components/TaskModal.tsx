@@ -18,11 +18,16 @@ export default function TaskModal({ isOpen, onOpenChange, handlePostRequest, tas
     const [description, setDescription] = useState<string>('');
 
     useEffect(() => {
-        if (task) {
+        if (task && isOpen) {
             setTitle(task.title);
             setDescription(task.description);
         }
-    }, [task]);
+
+        if (!isOpen) {
+            setTitle('');
+            setDescription('');
+        }
+    }, [task, isOpen]);
 
     return (
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
