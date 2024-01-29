@@ -22,7 +22,7 @@ export default function CreateTask() {
 
     return (
         <>
-            <Button onPress={onOpen} color="primary" variant="flat" className="my-10" fullWidth={true}>
+            <Button onPress={onOpen} className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg my-10" fullWidth={true}>
                 Crear Tarea
             </Button>
             <TaskModal

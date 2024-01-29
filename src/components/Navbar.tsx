@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Avatar, AvatarIcon } from "@nextui-org/react";
 
 export default function NavbarComponent() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -9,6 +9,7 @@ export default function NavbarComponent() {
     const menuItems = [
         "Tareas",
         "Clima",
+        "Gastos",
         "Log Out",
     ];
 
@@ -20,7 +21,9 @@ export default function NavbarComponent() {
                     className="sm:hidden"
                 />
                 <NavbarBrand>
-                    <p className="font-bold text-inherit">RORO</p>
+                    <Link href={"/"}>
+                        <p className="font-bold text-inherit text-neutral-50">RORO</p>
+                    </Link>
                 </NavbarBrand>
             </NavbarContent>
 
@@ -42,14 +45,29 @@ export default function NavbarComponent() {
                 </NavbarItem>
             </NavbarContent>
             <NavbarContent justify="end">
-                <NavbarItem className="hidden lg:flex">
-                    <Link href="#">Login</Link>
-                </NavbarItem>
-                <NavbarItem>
-                    <Button as={Link} color="primary" href="#" variant="flat">
-                        Sign Up
-                    </Button>
-                </NavbarItem>
+                {
+                    true ?
+                        <div className="flex items-center">
+                            <Avatar
+                                icon={<AvatarIcon />}
+                                classNames={{
+                                    base: "bg-gradient-to-br from-[#FFB457] to-[#FF705B]",
+                                    icon: "text-black/80",
+                                }}
+                            />
+                        </div>
+                        :
+                        <div>
+                            <NavbarItem className="hidden lg:flex">
+                                <Link href="#">Login</Link>
+                            </NavbarItem><NavbarItem>
+                                <Button as={Link} color="primary" href="#" variant="flat">
+                                    Sign Up
+                                </Button>
+                            </NavbarItem>
+                        </div>
+                }
+
             </NavbarContent>
             <NavbarMenu >
                 {menuItems.map((item, index) => (
