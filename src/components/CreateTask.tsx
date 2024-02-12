@@ -22,8 +22,8 @@ export default function CreateTask() {
 
     return (
         <>
-            <Button onPress={onOpen} className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg my-10" fullWidth={true}>
-                Crear Tarea
+            <Button onPress={onOpen} className="my-10" color="primary" variant="flat" fullWidth={true}>
+                Agregar Tarea
             </Button>
             <TaskModal
                 isOpen={isOpen}

@@ -55,7 +55,7 @@ export default function TaskModal({ isOpen, onOpenChange, handlePostRequest, tas
                         </ModalBody>
                         <ModalFooter>
                             {type == 'create' && <Button fullWidth={true} color="primary" variant="flat" onPress={() => handlePostRequest({ title, description })}>
-                                Crear
+                                Agregar
                             </Button>}
                             {type == 'update' && <Button fullWidth={true} color="primary" variant="flat" onPress={() => handlePostRequest({ title, description, _id: task?._id })}>
                                 Editar

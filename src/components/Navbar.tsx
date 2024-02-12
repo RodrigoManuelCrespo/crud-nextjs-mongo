@@ -3,14 +3,19 @@
 import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Avatar, AvatarIcon } from "@nextui-org/react";
 
+interface MenuItems {
+    title: string,
+    url: string,
+}
+
 export default function NavbarComponent() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-    const menuItems = [
-        "Tareas",
-        "Clima",
-        "Gastos",
-        "Log Out",
+    const menuItems: Array<MenuItems> = [
+        { title: "Tareas", url: '/tasks' },
+        { title: "Clima", url: '/weather' },
+        { title: "Tareas", url: '/tasks' },
+        { title: "Cerrar sesión", url: '/tasks' },
     ];
 
     return (
@@ -29,12 +34,12 @@ export default function NavbarComponent() {
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarItem isActive>
-                    <Link color="foreground" href="#">
+                    <Link color="foreground" href="/tasks">
                         Tareas
                     </Link>
                 </NavbarItem>
                 <NavbarItem >
-                    <Link color="foreground" href="#">
+                    <Link color="foreground" href="/weather">
                         Clima
                     </Link>
                 </NavbarItem>
@@ -46,7 +51,7 @@ export default function NavbarComponent() {
             </NavbarContent>
             <NavbarContent justify="end">
                 {
-                    true ?
+                    false ?
                         <div className="flex items-center">
                             <Avatar
                                 icon={<AvatarIcon />}
@@ -58,9 +63,7 @@ export default function NavbarComponent() {
                         </div>
                         :
                         <div>
-                            <NavbarItem className="hidden lg:flex">
-                                <Link href="#">Login</Link>
-                            </NavbarItem><NavbarItem>
+                            <NavbarItem>
                                 <Button as={Link} color="primary" href="#" variant="flat">
                                     Sign Up
                                 </Button>
@@ -74,13 +77,13 @@ export default function NavbarComponent() {
                     <NavbarMenuItem key={`${item}-${index}`}>
                         <Link
                             color={
-                                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+                                index == menuItems.length - 1 ? "danger" : "foreground"
                             }
                             className="w-full"
-                            href="#"
+                            href={item.url}
                             size="lg"
                         >
-                            {item}
+                            {item.title}
                         </Link>
                     </NavbarMenuItem>
                 ))}
