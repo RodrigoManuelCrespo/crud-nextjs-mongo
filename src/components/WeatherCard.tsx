@@ -2,11 +2,11 @@ import { Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
 
 export default function WeatherCard({ weather }: any) {
     return (
-        <Card isFooterBlurred className="w-full h-[250px] col-span-12 sm:col-span-5 my-6">
+        <Card isFooterBlurred className="w-full h-[220px] col-span-12 sm:col-span-5 my-6">
             <CardHeader className="absolute z-10 top-1 flex justify-start items-start flex-col">
-                <h4 className="text-sm text-white/90 uppercase inline bg-black/60 mb-1 px-1 rounded-md font-bold">Rosario, Argentina.</h4>
-                <h4 className="text-sm text-white/90 uppercase inline bg-black/60 mb-1 px-1 rounded-md font-semibold">{weather?.current?.condition?.text}</h4>
-                <h4 className="text-sm text-white/90 uppercase inline bg-black/60 mb-1 px-1 rounded-md font-semibold">{weather?.current?.temp_c}° C</h4>
+                <h4 className="text-sm text-white/90 uppercase inline bg-black/70 mb-1 px-1 rounded-sm font-bold">Rosario, Argentina.</h4>
+                <h4 className="text-sm text-white/90 uppercase inline bg-black/70 mb-1 px-1 rounded-sm font-semibold">{weather?.current?.condition?.text}</h4>
+                <h4 className="text-sm text-white/90 uppercase inline bg-black/70 mb-1 px-1 rounded-sm font-semibold">{weather?.current?.temp_c}° C</h4>
             </CardHeader>
             <Image
                 alt="Card example background"
