@@ -22,8 +22,8 @@ export default function CreateTask() {
 
     return (
         <>
-            <Button variant="bordered" onPress={onOpen}>
-                <p className="text-black">Agregar Tarea</p>
+            <Button className="bg-gradient-to-tr from-purple-500 to-blue-500 text-white shadow-lg" onPress={onOpen}>
+                <p className="font-semibold">Agregar Tarea</p>
             </Button>
             <TaskModal
                 isOpen={isOpen}

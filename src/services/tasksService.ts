@@ -2,8 +2,6 @@ import { TaskModel } from "@/models/Task";
 
 export const postTask = async ({ title, description, priority }: TaskModel) => {
     try {
-        console.log('from service', title, description, priority);
-
         const response = await fetch('http://localhost:3000/api/tasks', {
             method: 'POST',
             headers: {
@@ -63,7 +61,7 @@ export const deleteTask = async (id: string) => {
     }
 };
 
-export const updateTask = async ({ title, description, _id }: TaskModel) => {
+export const updateTask = async ({ title, description, priority, _id }: TaskModel) => {
     try {
         const response = await fetch(`http://localhost:3000/api/tasks/${_id}`, {
             method: 'PUT',
@@ -72,7 +70,8 @@ export const updateTask = async ({ title, description, _id }: TaskModel) => {
             },
             body: JSON.stringify({
                 title,
-                description
+                description,
+                priority
             }),
         });
 

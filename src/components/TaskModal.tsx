@@ -62,11 +62,11 @@ export default function TaskModal({ isOpen, onOpenChange, handlePostRequest, tas
                                 label="Prioridad"
                                 variant="bordered"
                                 fullWidth={true}
+                                value={priority}
                                 onChange={(e) => {
                                     console.log(e);
                                     setPriority(e.target.value)
-                                }
-                                }
+                                }}
                             >
                                 {priorityData.map((item: string) => (
                                     <SelectItem key={item} value={item}>
@@ -76,10 +76,10 @@ export default function TaskModal({ isOpen, onOpenChange, handlePostRequest, tas
                             </Select>
                         </ModalBody>
                         <ModalFooter>
-                            {type == 'create' && <Button fullWidth={true} onPress={() => handlePostRequest({ title, description, priority })}>
+                            {type == 'create' && <Button className="bg-gradient-to-tr from-purple-500 to-blue-500" fullWidth={true} onPress={() => handlePostRequest({ title, description, priority })}>
                                 Agregar
                             </Button>}
-                            {type == 'update' && <Button fullWidth={true} onPress={() => handlePostRequest({ title, description, priority, _id: task?._id })}>
+                            {type == 'update' && <Button className="bg-gradient-to-tr from-purple-500 to-blue-500" fullWidth={true} onPress={() => handlePostRequest({ title, description, priority, _id: task?._id })}>
                                 Editar
                             </Button>}
                         </ModalFooter>

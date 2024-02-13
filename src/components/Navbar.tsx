@@ -51,20 +51,20 @@ export default function NavbarComponent() {
             </NavbarContent>
             <NavbarContent justify="end">
                 {
-                    false ?
+                    true ?
                         <div className="flex items-center">
                             <Avatar
                                 icon={<AvatarIcon />}
                                 classNames={{
-                                    base: "bg-gradient-to-br from-[#FFB457] to-[#FF705B]",
-                                    icon: "text-gray-800	/80",
+                                    base: "bg-indigo-500",
+                                    icon: "text-white/50",
                                 }}
                             />
                         </div>
                         :
                         <div>
                             <NavbarItem>
-                                <Button as={Link} href="#">
+                                <Button as={Link} href="#" className="bg-gradient-to-tr from-purple-500 to-blue-500">
                                     Sign Up
                                 </Button>
                             </NavbarItem>
