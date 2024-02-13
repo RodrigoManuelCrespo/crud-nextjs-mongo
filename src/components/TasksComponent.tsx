@@ -9,7 +9,7 @@ import { setTasks } from "@/store/slice";
 import TaskModal from "./TaskModal";
 import { Chip } from "@nextui-org/react";
 
-export default function Tasks() {
+export default function TasksComponent() {
     const dispatch = useAppDispatch();
     const tasks = useAppSelector(state => state.tasks.tasks);
     const { isOpen, onClose, onOpen, onOpenChange } = useDisclosure();
@@ -47,7 +47,7 @@ export default function Tasks() {
     }
 
     return (
-        <div>
+        <div className="px-5">
             <h1 className="font-semibold text-xl mb-5">Mis Tareas</h1>
             {tasks.map((task: TaskModel) => {
                 return (
