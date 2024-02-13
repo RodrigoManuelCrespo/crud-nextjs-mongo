@@ -13,8 +13,8 @@ export default function CreateTask() {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const dispatch = useAppDispatch();
 
-    const handlePostRequest = async ({ title, description }: TaskModel) => {
-        await postTask({ title, description })
+    const handlePostRequest = async ({ title, description, priority }: TaskModel) => {
+        await postTask({ title, description, priority })
         const tasks = await getTasks();
         dispatch(setTasks(tasks));
         onClose()
@@ -22,8 +22,8 @@ export default function CreateTask() {
 
     return (
         <>
-            <Button onPress={onOpen} className="my-10" color="primary" variant="flat" fullWidth={true}>
-                Agregar Tarea
+            <Button variant="bordered" onPress={onOpen}>
+                <p className="text-black">Agregar Tarea</p>
             </Button>
             <TaskModal
                 isOpen={isOpen}

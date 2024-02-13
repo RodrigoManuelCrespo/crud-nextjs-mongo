@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input, } from "@nextui-org/react";
 import { TaskModel } from "@/models/Task";
+import { Select, SelectItem } from "@nextui-org/react";
 
 interface Props {
     isOpen: boolean | undefined;
@@ -13,19 +14,24 @@ interface Props {
     type: 'create' | 'update'
 }
 
+const priorityData: Array<string> = ["Alta", "Media", "Baja",]
+
 export default function TaskModal({ isOpen, onOpenChange, handlePostRequest, task, titleModal, type }: Props) {
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
+    const [priority, setPriority] = useState<string>('');
 
     useEffect(() => {
         if (task && isOpen) {
             setTitle(task.title);
             setDescription(task.description);
+            setPriority(task.priority);
         }
 
         if (!isOpen) {
             setTitle('');
             setDescription('');
+            setPriority('')
         }
     }, [task, isOpen]);
 
@@ -52,12 +58,28 @@ export default function TaskModal({ isOpen, onOpenChange, handlePostRequest, tas
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                             />
+                            <Select
+                                label="Prioridad"
+                                variant="bordered"
+                                fullWidth={true}
+                                onChange={(e) => {
+                                    console.log(e);
+                                    setPriority(e.target.value)
+                                }
+                                }
+                            >
+                                {priorityData.map((item: string) => (
+                                    <SelectItem key={item} value={item}>
+                                        {item}
+                                    </SelectItem>
+                                ))}
+                            </Select>
                         </ModalBody>
                         <ModalFooter>
-                            {type == 'create' && <Button fullWidth={true} color="primary" variant="flat" onPress={() => handlePostRequest({ title, description })}>
+                            {type == 'create' && <Button fullWidth={true} onPress={() => handlePostRequest({ title, description, priority })}>
                                 Agregar
                             </Button>}
-                            {type == 'update' && <Button fullWidth={true} color="primary" variant="flat" onPress={() => handlePostRequest({ title, description, _id: task?._id })}>
+                            {type == 'update' && <Button fullWidth={true} onPress={() => handlePostRequest({ title, description, priority, _id: task?._id })}>
                                 Editar
                             </Button>}
                         </ModalFooter>

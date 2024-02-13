@@ -2,19 +2,9 @@ import { Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
 
 export default function WeatherCard({ weather }: any) {
     return (
-        <Card isFooterBlurred className="w-full h-[220px] col-span-12 sm:col-span-5 my-6">
-            <CardHeader className="absolute z-10 top-1 flex justify-start items-start flex-col">
-                <h4 className="text-sm text-white/90 uppercase inline bg-black/70 mb-1 px-1 rounded-sm font-bold">Rosario, Argentina.</h4>
-                <h4 className="text-sm text-white/90 uppercase inline bg-black/70 mb-1 px-1 rounded-sm font-semibold">{weather?.current?.condition?.text}</h4>
-                <h4 className="text-sm text-white/90 uppercase inline bg-black/70 mb-1 px-1 rounded-sm font-semibold">{weather?.current?.temp_c}° C</h4>
-            </CardHeader>
-            <Image
-                alt="Card example background"
-                className="z-0 w-full h-full scale-120 object-cover"
-                src="/sunny.jpeg"
-            />
-            <CardFooter className="absolute bg-black/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
-                <div className="flex w-full flex justify-between">
+        <Card isFooterBlurred className="w-full h-[350px] col-span-12 sm:col-span-5 my-6 relative">
+            <CardHeader className="absolute flex justify-start items-center flex-col">
+                <div className="flex justify-between bg-black/60 px-4 py-2 rounded-3xl">
                     <div className="w-full">
                         <div className="flex gap-4 justify-center w-full">
                             <div>
@@ -52,6 +42,16 @@ export default function WeatherCard({ weather }: any) {
                         </div>
                     </div>
                 </div>
+            </CardHeader>
+            <Image
+                alt="Card example background"
+                className="z-0 w-full h-full scale-100 object-cover"
+                src="/night.jpeg"
+            />
+            <CardFooter className="absolute bg-black/40 bottom-0 border-t-1 border-zinc-100/50 z-10 flex flex-col item-start justify-start">
+                <h4 className="text-left w-full">Rosario, Argentina.</h4>
+                <h4 className="text-left w-full">{weather?.current?.condition?.text}</h4>
+                <h4 className="text-left w-full">{weather?.current?.temp_c}° C</h4>
             </CardFooter>
         </Card>
     )

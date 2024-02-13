@@ -5,6 +5,7 @@ export interface TaskModel {
     _id?: string
     title: string;
     description: string;
+    priority: string;
 }
 
 // 2. Create a Schema corresponding to the document interface.
@@ -16,6 +17,11 @@ const taskSchema = new Schema<TaskModel>({
         trim: true
     },
     description: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    priority: {
         type: String,
         required: true,
         trim: true

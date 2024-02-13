@@ -57,14 +57,14 @@ export default function NavbarComponent() {
                                 icon={<AvatarIcon />}
                                 classNames={{
                                     base: "bg-gradient-to-br from-[#FFB457] to-[#FF705B]",
-                                    icon: "text-black/80",
+                                    icon: "text-gray-800	/80",
                                 }}
                             />
                         </div>
                         :
                         <div>
                             <NavbarItem>
-                                <Button as={Link} color="primary" href="#" variant="flat">
+                                <Button as={Link} href="#">
                                     Sign Up
                                 </Button>
                             </NavbarItem>

@@ -1,7 +1,9 @@
 import { TaskModel } from "@/models/Task";
 
-export const postTask = async ({ title, description }: TaskModel) => {
+export const postTask = async ({ title, description, priority }: TaskModel) => {
     try {
+        console.log('from service', title, description, priority);
+
         const response = await fetch('http://localhost:3000/api/tasks', {
             method: 'POST',
             headers: {
@@ -10,6 +12,7 @@ export const postTask = async ({ title, description }: TaskModel) => {
             body: JSON.stringify({
                 title,
                 description,
+                priority
             }),
         });
 

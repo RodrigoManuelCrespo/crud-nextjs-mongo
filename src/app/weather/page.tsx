@@ -31,10 +31,10 @@ export default function WeatherScreen() {
           isClearable
           radius="lg"
           classNames={{
-            label: "text-black/50 dark:text-white/90",
+            label: "text-gray-800	/50 dark:text-white/90",
             input: [
               "bg-transparent my",
-              "text-black/90 dark:text-white/90",
+              "text-gray-800	/90 dark:text-white/90",
               "placeholder:text-default-700/50 dark:placeholder:text-white/60",
             ],
             innerWrapper: "bg-transparent",
