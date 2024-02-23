@@ -42,11 +42,6 @@ export default function NavbarComponent() {
                         Clima
                     </Link>
                 </NavbarItem>
-                <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Gastos
-                    </Link>
-                </NavbarItem>
             </NavbarContent>
             <NavbarContent justify="end">
                 {

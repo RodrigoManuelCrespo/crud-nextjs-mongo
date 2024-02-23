@@ -22,7 +22,7 @@ export default function TasksWelcomeComponent() {
     return (
         <>
             <Card className="rounded-t-none rounded-b-3xl	p-5 bg-zinc-800 mb-4">
-                <h1 className="font-bold text-xl mb-2">¡Bienvenido de nuevo!</h1>
+                <h1 className="font-bold text-xl mb-2">Tareas</h1>
                 <h1 className="text-l mb-8"> Organiza tu día con eficacia, empecemos a trabajar en tus tareas.</h1>
                 <Button className="bg-gradient-to-tr from-purple-500 to-blue-500 text-white shadow-lg" onPress={onOpen}>
                     <p className="font-semibold">Agregar Tarea</p>
