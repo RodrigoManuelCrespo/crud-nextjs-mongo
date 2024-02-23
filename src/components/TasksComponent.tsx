@@ -60,7 +60,7 @@ export default function TasksComponent() {
                                     <Chip
                                         variant="shadow"
                                         classNames={{
-                                            base: `${task.priority == 'Baja' && 'bg-pink-400'} ${task.priority == 'Media' && 'bg-purple-400'} ${task.priority == 'Alta' && 'bg-blue-400'}`,
+                                            base: `${task.priority == 'Baja' && 'bg-indigo-400'} ${task.priority == 'Media' && 'bg-indigo-600'} ${task.priority == 'Alta' && 'bg-indigo-800'}`,
                                             content: "drop-shadow shadow-black text-white",
                                         }}
                                     >

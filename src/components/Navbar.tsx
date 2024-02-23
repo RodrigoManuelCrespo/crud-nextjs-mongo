@@ -26,7 +26,7 @@ export default function NavbarComponent() {
                 />
                 <NavbarBrand>
                     <Link href={"/"}>
-                        <p className="font-bold text-inherit text-neutral-50">RORO</p>
+                        <p className="font-bold text-inherit text-neutral-50 text-l">PlanApp</p>
                     </Link>
                 </NavbarBrand>
             </NavbarContent>
