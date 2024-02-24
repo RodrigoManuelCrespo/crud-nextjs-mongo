@@ -2,7 +2,8 @@ import { TaskModel } from "@/models/Task";
 
 export const postTask = async ({ title, description, priority }: TaskModel) => {
     try {
-        const response = await fetch('http://localhost:3000/api/tasks', {
+        const url = process.env.NEXT_PUBLIC_API_URL
+        const response = await fetch(`${url}tasks`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -28,7 +29,8 @@ export const postTask = async ({ title, description, priority }: TaskModel) => {
 };
 
 export const getTasks = async () => {
-    const res = await fetch('http://localhost:3000/api/tasks', { cache: 'no-store' })
+    const url = process.env.NEXT_PUBLIC_API_URL
+    const res = await fetch(`${url}tasks`, { cache: 'no-store' })
     const tasks = await res.json()
 
     if (!res.ok) {
@@ -40,7 +42,8 @@ export const getTasks = async () => {
 
 export const deleteTask = async (id: string) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+        const url = process.env.NEXT_PUBLIC_API_URL
+        const response = await fetch(`${url}tasks/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -63,7 +66,8 @@ export const deleteTask = async (id: string) => {
 
 export const updateTask = async ({ title, description, priority, _id }: TaskModel) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/tasks/${_id}`, {
+        const url = process.env.NEXT_PUBLIC_API_URL
+        const response = await fetch(`${url}tasks/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

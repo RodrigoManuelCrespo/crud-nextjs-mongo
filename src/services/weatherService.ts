@@ -1,6 +1,7 @@
 
 export const getWeather = async () => {
-    const res = await fetch('http://localhost:3000/api/weather', { cache: 'no-store' })
+    const url = process.env.NEXT_PUBLIC_API_URL
+    const res = await fetch(`${url}weather`, { cache: 'no-store' })
     const weather = await res.json()
     console.log(weather);
 
