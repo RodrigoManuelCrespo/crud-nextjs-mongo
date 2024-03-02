@@ -5,9 +5,9 @@ let connectionState = {
 }
 
 export async function connectDB() {
-    const mongoUrl = process.env.MONGODB_URL;
+    const mongoUrl = process.env.NEXT_PUBLIC_MONGODB_URL;
     if (!mongoUrl) {
-        throw new Error("MONGODB_URL environment variable is not set.");
+        throw new Error("NEXT_PUBLIC_MONGODB_URL environment variable is not set.");
     }
 
     if (connectionState.isConnected) return;
