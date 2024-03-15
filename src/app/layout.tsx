@@ -19,7 +19,6 @@ export default function RootLayout({
     <html lang="en" className='dark'>
       <body className={montserrat.className} >
         <Providers>
-          <NavbarComponent />
           {children}
         </Providers>
       </body>

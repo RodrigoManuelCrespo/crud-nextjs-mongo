@@ -4,6 +4,7 @@ import { getWeather } from "@/services/weatherService";
 import { useEffect, useState } from "react";
 import { Card, CardHeader, CardBody, CardFooter, Image, Button, Input } from "@nextui-org/react";
 import WeatherCard from "@/components/WeatherCard";
+import NavbarComponent from "@/components/Navbar";
 
 export default function WeatherScreen() {
   const [weather, setWeather] = useState<any>(null)
@@ -23,11 +24,13 @@ export default function WeatherScreen() {
   }, []);
 
   return (
-    <div className="max-w-[600px] m-auto">
-      <Card className="rounded-t-none rounded-b-3xl	p-5 bg-zinc-800 mb-4">
-        <h1 className="font-bold text-xl mb-2">Clima</h1>
-        <h1 className="text-l mb-8"> Obtén la información meteorológica actualizada para planificar tu día con precisión.</h1>
-        {/* <div className="mb-4">
+    <>
+      <NavbarComponent />
+      <div className="max-w-[600px] m-auto">
+        <Card className="rounded-t-none rounded-b-3xl	p-5 bg-zinc-800 mb-4">
+          <h1 className="font-bold text-xl mb-2">Clima</h1>
+          <h1 className="text-l mb-8"> Obtén la información meteorológica actualizada para planificar tu día con precisión.</h1>
+          {/* <div className="mb-4">
           <Input
             label="Buscar"
             isClearable
@@ -56,10 +59,11 @@ export default function WeatherScreen() {
             placeholder="Buscar ciudad..."
           />
         </div> */}
-      </Card>
-      <div className="px-6">
-        <WeatherCard weather={weather} />
+        </Card>
+        <div className="px-6">
+          <WeatherCard weather={weather} />
+        </div>
       </div>
-    </div>
+    </>
   )
 }

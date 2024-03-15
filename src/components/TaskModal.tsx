@@ -36,7 +36,12 @@ export default function TaskModal({ isOpen, onOpenChange, handlePostRequest, tas
     }, [task, isOpen]);
 
     return (
-        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal
+            isOpen={isOpen}
+            onOpenChange={onOpenChange}
+            backdrop="blur"
+            style={{ transform: "none" }}
+        >
             <ModalContent>
                 {() => (
                     <>
