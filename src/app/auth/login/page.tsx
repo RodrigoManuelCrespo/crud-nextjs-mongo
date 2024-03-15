@@ -1,3 +1,5 @@
+'use client'
+
 import { Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
