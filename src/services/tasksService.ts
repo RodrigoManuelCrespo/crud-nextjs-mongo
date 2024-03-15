@@ -17,14 +17,11 @@ export const postTask = async ({ title, description, priority }: TaskModel) => {
 
         if (response.ok) {
             console.log('Post successful!');
-            // Puedes manejar cualquier acción después de una solicitud exitosa aquí
         } else {
             console.error('Error al realizar la solicitud:', response.status, response.statusText);
-            // Puedes manejar cualquier acción en caso de error aquí
         }
     } catch (error) {
         console.error('Error inesperado:', error);
-        // Puedes manejar cualquier error inesperado aquí
     }
 };
 

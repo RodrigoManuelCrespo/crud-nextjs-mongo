@@ -1,6 +1,14 @@
 import { Schema, model, models } from "mongoose"
 
-const userSchema = new Schema({
+export interface UserModel {
+    _id?: string
+    username: string;
+    email: string;
+    password: string;
+}
+
+
+const userSchema = new Schema<UserModel>({
     email: {
         type: String,
         unique: true,
