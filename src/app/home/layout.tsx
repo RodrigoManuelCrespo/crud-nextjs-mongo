@@ -1,6 +1,6 @@
-import './globals.css'
+import '../globals.css'
 import { Montserrat } from 'next/font/google'
-import { Providers } from "./providers";
+import { Providers } from "../providers";
 import NavbarComponent from '@/components/Navbar';
 
 const montserrat = Montserrat({ subsets: ['latin'] })
@@ -19,6 +19,7 @@ export default function RootLayout({
     <html lang="en" className='dark'>
       <body className={montserrat.className} >
         <Providers>
+          <NavbarComponent />
           {children}
         </Providers>
       </body>

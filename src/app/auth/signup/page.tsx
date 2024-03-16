@@ -2,6 +2,7 @@
 
 import { postSignup } from "@/services/authService";
 import { Image } from "@nextui-org/react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
 
@@ -9,18 +10,32 @@ export default function Signup() {
   const router = useRouter();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    try {
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
 
-    const res = await postSignup({
-      email: formData.get("email") as string,
-      password: formData.get("password") as string,
-      username: formData.get("username") as string,
-    })
+      const resBackend: any = await postSignup({
+        email: formData.get("email") as string,
+        password: formData.get("password") as string,
+        username: formData.get("username") as string,
+      })
 
-    if (res?.ok) {
-      return router.push("/")
+      if (resBackend?.ok) {
+        const resAuth = await signIn("credentials", {
+          email: formData.get("email"),
+          password: formData.get("password"),
+          redirect: false
+        })
+
+        resAuth?.ok && router.push("/home")
+
+      } else {
+        return console.error("Error al inciar sesion")
+      }
+    } catch (error) {
+      console.error("Error al inciar sesion")
     }
+
   };
 
   return (
@@ -74,11 +89,6 @@ export default function Signup() {
                 <label htmlFor="password" className="block text-sm font-medium leading-6">
                   Contraseña
                 </label>
-                <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    ¿Te olvidaste la contraseña?
-                  </a>
-                </div>
               </div>
               <div className="mt-2">
                 <input
@@ -101,11 +111,10 @@ export default function Signup() {
               </button>
             </div>
           </form>
-
           <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{' '}
-            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-              Start a 14 day free trial
+            ¿Ya eres miembro?{' '}
+            <a href="/auth/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+              Inicia sesion
             </a>
           </p>
         </div>

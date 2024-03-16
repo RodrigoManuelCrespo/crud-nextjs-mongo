@@ -14,7 +14,7 @@ export default function NavbarComponent() {
     const menuItems: Array<MenuItems> = [
         { title: "Tareas", url: '/tasks' },
         { title: "Clima", url: '/weather' },
-        { title: "Cerrar sesión", url: '/' },
+        { title: "Cerrar sesión", url: '/api/auth/signout' },
     ];
 
     return (

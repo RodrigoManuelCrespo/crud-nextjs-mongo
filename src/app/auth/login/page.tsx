@@ -1,10 +1,32 @@
 'use client'
 
 import { Image } from "@nextui-org/react";
-import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { FormEvent } from "react";
 
 export default function Login() {
     const router = useRouter();
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        try {
+            event.preventDefault();
+            const formData = new FormData(event.currentTarget);
+
+            const resAuth = await signIn("credentials", {
+                email: formData.get("email"),
+                password: formData.get("password"),
+                redirect: false,
+            });
+
+            if (resAuth?.ok) {
+                return router.push(('/'))
+            }
+        } catch (error) {
+            console.error("Error al iniciar sesion", error)
+        }
+    }
+
 
     return (
         <>
@@ -21,7 +43,7 @@ export default function Login() {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST">
+                    <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6">
                                 Email
@@ -43,11 +65,11 @@ export default function Login() {
                                 <label htmlFor="password" className="block text-sm font-medium leading-6">
                                     Contraseña
                                 </label>
-                                <div className="text-sm">
+                                {/* <div className="text-sm">
                                     <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                         ¿Te olvidaste la contraseña?
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="mt-2">
                                 <input
@@ -72,9 +94,9 @@ export default function Login() {
                     </form>
 
                     <p className="mt-10 text-center text-sm text-gray-500">
-                        Not a member?{' '}
-                        <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                            Start a 14 day free trial
+                        ¿No eres miembro?{' '}
+                        <a href="/auth/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                            Registrate
                         </a>
                     </p>
                 </div>
