@@ -1,4 +1,4 @@
-import { Schema, model, models } from 'mongoose';
+import { Schema, Types, model, models } from 'mongoose';
 
 // 1. Create an interface representing a document in MongoDB.
 export interface TaskModel {
@@ -6,6 +6,7 @@ export interface TaskModel {
     title: string;
     description: string;
     priority: string;
+    createdBy?: Types.ObjectId;
 }
 
 // 2. Create a Schema corresponding to the document interface.
@@ -25,6 +26,11 @@ const taskSchema = new Schema<TaskModel>({
         type: String,
         required: true,
         trim: true
+    },
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
 }, {
     timestamps: true

@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     try {
         await connectDB();
 
-        const { fullname, email, password } = await request.json();
+        const { username, email, password } = await request.json();
 
         const userFound = await User.findOne({ email });
 
@@ -25,17 +25,16 @@ export async function POST(request: Request) {
         const hashedPassword = await bcrypt.hash(password, 12);
 
         const user = new User({
-            fullname,
+            username,
             email,
             password: hashedPassword,
         });
 
         const savedUser = await user.save();
-        console.log(savedUser);
 
         return NextResponse.json(
             {
-                fullname,
+                username,
                 email,
                 createdAt: savedUser.createdAt,
                 updatedAt: savedUser.updatedAt,

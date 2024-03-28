@@ -40,7 +40,7 @@ export default function TaskModal({ isOpen, onOpenChange, handlePostRequest, tas
             isOpen={isOpen}
             onOpenChange={onOpenChange}
             backdrop="blur"
-            style={{ transform: "none" }}
+            className="mb-[85px]"
         >
             <ModalContent>
                 {() => (

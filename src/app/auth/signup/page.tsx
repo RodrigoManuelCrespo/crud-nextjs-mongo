@@ -24,6 +24,7 @@ export default function Signup() {
         const resAuth = await signIn("credentials", {
           email: formData.get("email"),
           password: formData.get("password"),
+          username: formData.get("username"),
           redirect: false
         })
 

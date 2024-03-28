@@ -15,6 +15,7 @@ const handler = NextAuth({
             },
             async authorize(credentials, req) {
                 await connectDB();
+
                 const userFound = await User.findOne({
                     email: credentials?.email,
                 }).select("+password");
@@ -28,19 +29,16 @@ const handler = NextAuth({
 
                 if (!passwordMatch) throw new Error("Invalid credentials");
 
-                console.log(userFound);
-
                 return userFound;
             }
         })
     ],
     callbacks: {
         async jwt({ token, user }) {
-            if (user) token.user = user;
-            return token;
+            return { ...token, ...user };
         },
         async session({ session, token }) {
-            session.user = token.user as any;
+            session.user = token as any;
             return session;
         },
     },
