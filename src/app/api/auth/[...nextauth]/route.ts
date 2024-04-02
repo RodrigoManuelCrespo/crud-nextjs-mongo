@@ -11,7 +11,7 @@ const handler = NextAuth({
                 username: { label: "Username", placeholder: "username" },
             },
             async authorize(credentials, req) {
-                const url = process.env.NEXT_PUBLIC_BACKEND_URL
+                const url = process.env.NEXT_PUBLIC_API_URL
                 const response = await fetch(`${url}auth/login`, {
                     method: 'POST',
                     headers: {
