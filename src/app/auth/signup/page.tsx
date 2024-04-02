@@ -14,13 +14,13 @@ export default function Signup() {
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
 
-      const resBackend: any = await postSignup({
+      const res: any = await postSignup({
         email: formData.get("email") as string,
         password: formData.get("password") as string,
         username: formData.get("username") as string,
       })
 
-      if (resBackend?.ok) {
+      if (res?.ok) {
         const resAuth = await signIn("credentials", {
           email: formData.get("email"),
           password: formData.get("password"),

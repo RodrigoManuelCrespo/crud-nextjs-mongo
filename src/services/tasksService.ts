@@ -1,13 +1,14 @@
 import { TaskModel } from "@/models/Task";
+import { getHeader } from "./apiService";
 
 export const postTask = async ({ title, description, priority }: TaskModel) => {
     try {
         const url = process.env.NEXT_PUBLIC_API_URL
+        const headers = await getHeader()
+
         const response = await fetch(`${url}tasks`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers,
             body: JSON.stringify({
                 title,
                 description,
@@ -27,7 +28,8 @@ export const postTask = async ({ title, description, priority }: TaskModel) => {
 
 export const getTasks = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL
-    const res = await fetch(`${url}tasks`, { cache: 'no-store' })
+    const headers = await getHeader()
+    const res = await fetch(`${url}tasks`, { headers, cache: 'no-store' })
     const tasks = await res.json()
 
     if (!res.ok) {
@@ -40,35 +42,29 @@ export const getTasks = async () => {
 export const deleteTask = async (id: string) => {
     try {
         const url = process.env.NEXT_PUBLIC_API_URL
+        const headers = await getHeader()
         const response = await fetch(`${url}tasks/${id}`, {
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers,
         });
-
 
         if (response.ok) {
             console.log('Delete successful!');
-            // Puedes manejar cualquier acción después de una solicitud exitosa aquí
         } else {
             console.error('Error al realizar la solicitud:', response.status, response.statusText);
-            // Puedes manejar cualquier acción en caso de error aquí
         }
     } catch (error) {
         console.error('Error inesperado:', error);
-        // Puedes manejar cualquier error inesperado aquí
     }
 };
 
 export const updateTask = async ({ title, description, priority, _id }: TaskModel) => {
     try {
         const url = process.env.NEXT_PUBLIC_API_URL
+        const headers = await getHeader()
         const response = await fetch(`${url}tasks/${_id}`, {
             method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers,
             body: JSON.stringify({
                 title,
                 description,
@@ -78,13 +74,10 @@ export const updateTask = async ({ title, description, priority, _id }: TaskMode
 
         if (response.ok) {
             console.log('Edit successful!');
-            // Puedes manejar cualquier acción después de una solicitud exitosa aquí
         } else {
             console.error('Error al realizar la solicitud:', response.status, response.statusText);
-            // Puedes manejar cualquier acción en caso de error aquí
         }
     } catch (error) {
         console.error('Error inesperado:', error);
-        // Puedes manejar cualquier error inesperado aquí
     }
 };

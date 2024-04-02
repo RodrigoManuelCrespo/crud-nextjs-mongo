@@ -1,8 +1,5 @@
-import User from "@/models/User";
-import { connectDB } from "@/utils/mongoose";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
 
 const handler = NextAuth({
     providers: [
@@ -14,22 +11,25 @@ const handler = NextAuth({
                 username: { label: "Username", placeholder: "username" },
             },
             async authorize(credentials, req) {
-                await connectDB();
+                const url = process.env.NEXT_PUBLIC_BACKEND_URL
+                const response = await fetch(`${url}auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: credentials?.username,
+                        email: credentials?.email,
+                        password: credentials?.password
+                    }),
+                });
+                const user = await response.json()
 
-                const userFound = await User.findOne({
-                    email: credentials?.email,
-                }).select("+password");
+                if (user.error) throw user;
 
-                if (!userFound) throw new Error("Invalid credentials");
+                return user
 
-                const passwordMatch = await bcrypt.compare(
-                    credentials!.password,
-                    userFound.password
-                );
 
-                if (!passwordMatch) throw new Error("Invalid credentials");
-
-                return userFound;
             }
         })
     ],

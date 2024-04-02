@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
 import User from "@/models/User";
 import { connectDB } from "@/utils/mongoose";
+import jwt from "jsonwebtoken";
 
 export async function POST(request: Request) {
     try {
@@ -31,9 +32,12 @@ export async function POST(request: Request) {
         });
 
         const savedUser = await user.save();
+        const env = process.env.NEXTAUTH_SECRET || ''
+        const token = jwt.sign({ userId: savedUser._id }, env);
 
         return NextResponse.json(
             {
+                token,
                 username,
                 email,
                 createdAt: savedUser.createdAt,

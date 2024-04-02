@@ -1,9 +1,16 @@
 export const getHeader = async () => {
-    // Verifica si hay una sesión y un token
-    if (true) {
-        // Haz lo que necesites con el token
-        console.log('Token de acceso:');
-    } else {
-        console.log('El usuario no está autenticado o no se pudo obtener el token.');
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+        let header = {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        }
+        return header
+    }
+};
+
+export const saveTokenToLocalStorage = (session: any) => {
+    if (session.user) {
+        localStorage.setItem('accessToken', session.user.token);
     }
 };

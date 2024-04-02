@@ -1,8 +1,18 @@
 'use client'
 
+import { saveTokenToLocalStorage } from "@/services/apiService";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Home() {
+  const { data } = useSession()
+  useEffect(() => {
+    if (data) {
+      saveTokenToLocalStorage(data);
+    }
+  }, [data]);
+
   return (
 
     <main className="max-w-[600px] m-auto p-5">
