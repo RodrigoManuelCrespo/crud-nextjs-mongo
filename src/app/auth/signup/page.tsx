@@ -43,17 +43,19 @@ export default function Signup() {
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <Image
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
-            Registrate
-          </h2>
+          <div className="flex justify-center">
+            <Image
+              width={200}
+              src="/mokuteki-logo.png"
+              alt="Your Company"
+            />
+          </div>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <h2 className="mb-4 text-center text-2xl font-bold leading-9 tracking-tight">
+            Registrate
+          </h2>
           <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm font-medium leading-6">

@@ -24,7 +24,7 @@ export default function Home() {
     return (
       <>
         <h1 className="font-bold text-xl mb-2">Bienvenido</h1>
-        <h4 className="text-l capitalize">{today}</h4>
+        <h4 className="text-l text-default-500 capitalize">{today}</h4>
       </>
     )
   }

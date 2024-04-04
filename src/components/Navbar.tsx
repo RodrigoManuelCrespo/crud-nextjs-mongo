@@ -12,6 +12,7 @@ export default function NavbarComponent() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const menuItems: Array<MenuItems> = [
+        { title: "Inicio", url: '/home  ' },
         { title: "Tareas", url: '/home/tasks' },
         { title: "Clima", url: '/home/weather' },
         { title: "Cerrar sesión", url: '/api/auth/signout' },
@@ -26,13 +27,18 @@ export default function NavbarComponent() {
                 />
                 <NavbarBrand>
                     <Link href={"/"}>
-                        <p className="font-bold text-inherit text-neutral-50 text-l">PlanApp</p>
+                        <p className="font-bold uppercase text-inherit text-neutral-50 text-l">Mokuteki</p>
                     </Link>
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarItem isActive>
+                <NavbarItem>
+                    <Link color="foreground" href="/home">
+                        Inicio
+                    </Link>
+                </NavbarItem>
+                <NavbarItem>
                     <Link color="foreground" href="/home/tasks">
                         Tareas
                     </Link>
@@ -42,7 +48,7 @@ export default function NavbarComponent() {
                         Clima
                     </Link>
                 </NavbarItem>
-            </NavbarContent>
+            </NavbarContent >
             <NavbarContent justify="end">
                 {
                     true ?
@@ -82,6 +88,6 @@ export default function NavbarComponent() {
                     </NavbarMenuItem>
                 ))}
             </NavbarMenu>
-        </Navbar>
+        </Navbar >
     );
 }

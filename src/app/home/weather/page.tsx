@@ -28,7 +28,7 @@ export default function WeatherScreen() {
     return (
       <>
         <h1 className="font-bold text-xl mb-2">Clima</h1>
-        <h1 className="text-l"> Obtén la información meteorológica actualizada para planificar tu día con precisión.</h1>
+        <h1 className="text-l text-default-500"> Obtén la información meteorológica actualizada para planificar tu día con precisión.</h1>
       </>
     )
   }
