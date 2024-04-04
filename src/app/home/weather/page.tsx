@@ -2,16 +2,18 @@
 
 import { getWeather } from "@/services/weatherService";
 import { useEffect, useState } from "react";
-import { Card, CardHeader, CardBody, CardFooter, Image, Button, Input } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Image, Button, Input, Spinner } from "@nextui-org/react";
 import WeatherCard from "@/components/WeatherCard";
 import NavbarComponent from "@/components/Navbar";
 import HeaderComponent from "@/components/HeaderComponent";
 
 export default function WeatherScreen() {
   const [weather, setWeather] = useState<any>(null)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true)
       try {
         const weather = await getWeather();
         setWeather(weather)
@@ -19,6 +21,7 @@ export default function WeatherScreen() {
       } catch (error) {
         console.error("Error al obtener datos:", error);
       }
+      setLoading(false)
     };
 
     fetchData();
@@ -36,9 +39,16 @@ export default function WeatherScreen() {
   return (
     <div className="max-w-[600px] m-auto">
       <HeaderComponent content={headerContent()} />
-      <div className="px-4">
-        <WeatherCard weather={weather} />
-      </div>
+      {loading ?
+        <div className="flex justify-center items-center">
+          <Spinner size="lg" />
+        </div> :
+        <div className="px-4">
+          {weather &&
+            <WeatherCard weather={weather} />
+          }
+        </div>
+      }
     </div>
   )
 }
