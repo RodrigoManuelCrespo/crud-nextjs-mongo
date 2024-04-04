@@ -75,7 +75,7 @@ export default function TasksComponent() {
                                                     <p className="font-semibold text-[10px]">{task.priority}</p>
                                                 </Chip>
                                             </div>
-                                            <p className="text-sm mb-2">{task.description}</p>
+                                            <p className="text-sm text-default-500 mb-2">{task.description}</p>
                                         </div>
                                     </CardHeader>
                                     <Divider />
