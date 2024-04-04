@@ -28,7 +28,7 @@ module.exports = {
         dark: {
           layout: {}, // dark theme layout tokens
           colors: {
-            background: "#191919",
+            background: "#202020",
             foreground: "#ECEDEE", // or 50 to 900 DEFAULT
             primary: {
               //... 50 to 900

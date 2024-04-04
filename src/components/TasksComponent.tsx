@@ -47,11 +47,11 @@ export default function TasksComponent() {
     }
 
     return (
-        <div className="px-5">
+        <div className="px-4">
             <h1 className="font-semibold text-xl mb-5">Mis Tareas</h1>
             {tasks.map((task: TaskModel) => {
                 return (
-                    <Card className={`bg-zinc-800 border-none w-full mb-4`}
+                    <Card className="border-none w-full mb-4"
                         key={task._id}>
                         <CardHeader className="flex gap-3 py-5 w-full">
                             <div className="flex flex-col w-full">

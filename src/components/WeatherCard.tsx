@@ -7,13 +7,14 @@ export default function WeatherCard({ weather }: any) {
             <Chip
                 startContent={<Image
                     alt="nextui logo"
-                    height={16}
+                    height={14}
                     radius="sm"
                     src={image}
-                    width={16}
+                    width={14}
                 />}
                 variant="bordered"
                 color="primary"
+                className="pl-2"
             >
                 <span className="text-white">{title}</span>
             </Chip>
