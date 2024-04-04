@@ -58,7 +58,6 @@ export default function TasksComponent() {
                                 <div className="flex justify-between items-center mb-4">
                                     <p className="text-md font-semibold">{task.title}</p>
                                     <Chip
-                                        variant="shadow"
                                         classNames={{
                                             base: `${task.priority == 'Baja' && 'bg-indigo-400'} ${task.priority == 'Media' && 'bg-indigo-600'} ${task.priority == 'Alta' && 'bg-indigo-800'}`,
                                             content: "drop-shadow shadow-black text-white",
