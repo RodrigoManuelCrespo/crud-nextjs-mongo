@@ -17,12 +17,7 @@ export default function TasksComponent() {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const tasks = await getTasks();
-                dispatch(setTasks(tasks));
-            } catch (error) {
-                console.error("Error al obtener datos:", error);
-            }
+            await getTasks();
         };
 
         fetchData();
