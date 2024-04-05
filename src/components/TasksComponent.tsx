@@ -68,7 +68,7 @@ export default function TasksComponent() {
                                                 <p className="text-md font-semibold">{task.title}</p>
                                                 <Chip
                                                     classNames={{
-                                                        base: `${task.priority == 'Baja' && 'bg-indigo-400'} ${task.priority == 'Media' && 'bg-indigo-600'} ${task.priority == 'Alta' && 'bg-indigo-800'}`,
+                                                        base: `${task.priority == 'Baja' && 'bg-red-400'} ${task.priority == 'Media' && 'bg-red-600'} ${task.priority == 'Alta' && 'bg-red-800'}`,
                                                         content: "drop-shadow shadow-black text-white",
                                                     }}
                                                 >
@@ -80,12 +80,12 @@ export default function TasksComponent() {
                                     </CardHeader>
                                     <Divider />
                                     <CardFooter className="justify-center gap-5">
-                                        <Button isIconOnly onPress={() => handleDeleteRequest(task._id)} className="bg-gradient-to-tr from-purple-500 to-blue-500">
+                                        <Button isIconOnly onPress={() => handleDeleteRequest(task._id)} className="bg-gradient-to-tr from-primary to-secondary">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                                             </svg>
                                         </Button>
-                                        <Button isIconOnly onPress={() => handleOpenModal(task)} className="bg-gradient-to-tr from-purple-500 to-blue-500">
+                                        <Button isIconOnly onPress={() => handleOpenModal(task)} className="bg-gradient-to-tr from-primary to-secondary">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                                             </svg>

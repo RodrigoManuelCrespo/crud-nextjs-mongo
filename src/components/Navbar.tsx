@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Avatar, AvatarIcon } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Avatar, AvatarIcon, Image } from "@nextui-org/react";
 
 interface MenuItems {
     title: string,
@@ -27,7 +27,12 @@ export default function NavbarComponent() {
                 />
                 <NavbarBrand>
                     <Link href={"/"}>
-                        <p className="font-bold uppercase text-inherit text-neutral-50 text-l">Mokuteki</p>
+                        <Image
+                            width={110}
+                            src="/mokuteki-logo.png"
+                            alt="Your Company"
+                            radius="none"
+                        />
                     </Link>
                 </NavbarBrand>
             </NavbarContent>
@@ -56,7 +61,7 @@ export default function NavbarComponent() {
                             <Avatar
                                 icon={<AvatarIcon />}
                                 classNames={{
-                                    base: "bg-indigo-500",
+                                    base: "bg-primary",
                                     icon: "text-white/50",
                                 }}
                             />
@@ -64,7 +69,7 @@ export default function NavbarComponent() {
                         :
                         <div>
                             <NavbarItem>
-                                <Button as={Link} href="#" className="bg-gradient-to-tr from-purple-500 to-blue-500">
+                                <Button as={Link} href="#" className="bg-gradient-to-tr from-primary to-secondary">
                                     Sign Up
                                 </Button>
                             </NavbarItem>

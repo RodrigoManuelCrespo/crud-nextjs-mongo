@@ -32,8 +32,13 @@ module.exports = {
             foreground: "#ECEDEE", // or 50 to 900 DEFAULT
             primary: {
               //... 50 to 900
-              foreground: "#006FEE",
-              DEFAULT: "#006FEE",
+              foreground: "#f00b51",
+              DEFAULT: "#f00b51",
+            },
+            secondary: {
+              //... 50 to 900
+              foreground: "##7A0061",
+              DEFAULT: "#7A0061",
             },
           },
         },

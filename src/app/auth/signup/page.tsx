@@ -49,20 +49,18 @@ export default function Signup() {
           <Spinner size="lg" />
         </div> :
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm my-10">
             <div className="flex justify-center">
               <Image
-                width={200}
+                width={250}
                 src="/mokuteki-logo.png"
                 alt="Your Company"
+                radius="none"
               />
             </div>
           </div>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 className="mb-4 text-center text-2xl font-bold leading-9 tracking-tight">
-              Registrate
-            </h2>
             <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-sm font-medium leading-6">
@@ -73,7 +71,7 @@ export default function Signup() {
                     id="username"
                     name="username"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block px-2 w-full rounded-md border-none outline-none py-1.5 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -89,7 +87,7 @@ export default function Signup() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block px-2 w-full rounded-md border-none outline-none py-1.5 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -107,7 +105,7 @@ export default function Signup() {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block px-2 w-full rounded-md border-none outline-none py-1.5 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -115,7 +113,7 @@ export default function Signup() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   Sign in
                 </button>
@@ -123,7 +121,7 @@ export default function Signup() {
             </form>
             <p className="mt-10 text-center text-sm text-gray-500">
               ¿Ya eres miembro?{' '}
-              <a href="/auth/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+              <a href="/auth/login" className="font-semibold leading-6 text-primary hover:text-primary">
                 Inicia sesion
               </a>
             </p>

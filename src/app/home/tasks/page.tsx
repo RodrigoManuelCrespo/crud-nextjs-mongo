@@ -25,7 +25,7 @@ export default function TaskScreen() {
       <>
         <h1 className="font-bold text-xl mb-2">Tareas</h1>
         <h1 className="text-l mb-8 text-default-500"> Organiza tu día con eficacia, empecemos a trabajar en tus tareas.</h1>
-        <Button className="bg-gradient-to-tr from-purple-500 to-blue-500 text-white shadow-lg" onPress={onOpen}>
+        <Button className="bg-gradient-to-tr from-primary to-secondary text-white shadow-lg" onPress={onOpen}>
           <p className="font-semibold">Agregar Tarea</p>
         </Button>
         <TaskModal

@@ -12,7 +12,7 @@ export default function WeatherCard({ weather }: any) {
                     src={image}
                     width={14}
                 />}
-                variant="bordered"
+                variant="solid"
                 color="primary"
                 className="pl-2"
             >
