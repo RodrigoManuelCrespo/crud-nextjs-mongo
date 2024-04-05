@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { Slice } from './slice'
-// import { tasksApi } from '@/services/tasksService'
 import { setupListeners } from '@reduxjs/toolkit/query'
+import taskSlice from './slices/taskSlice';
+import weatherSlice from './slices/weatherSlice';
 
 export const store = configureStore({
     reducer: {
-        tasks: Slice.reducer,
-        // [tasksApi.reducerPath]: tasksApi.reducer
+        tasks: taskSlice,
+        weather: weatherSlice,
     },
 })
 

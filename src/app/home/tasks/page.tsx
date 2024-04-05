@@ -6,7 +6,7 @@ import TasksComponent from "@/components/TasksComponent";
 import { TaskModel } from "@/models/Task";
 import { getTasks, postTask } from "@/services/tasksService";
 import { useAppDispatch } from "@/store/hook";
-import { setTasks } from "@/store/slice";
+import { setTasks } from "@/store/slices/taskSlice";
 import { Button, useDisclosure } from "@nextui-org/react";
 
 export default function TaskScreen() {

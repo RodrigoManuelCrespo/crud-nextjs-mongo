@@ -5,9 +5,9 @@ import { TaskModel } from "@/models/Task";
 import { Card, CardHeader, CardFooter, Divider, Button, useDisclosure, Spinner } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
-import { setTasks } from "@/store/slice";
 import TaskModal from "./TaskModal";
 import { Chip } from "@nextui-org/react";
+import { setTasks } from "@/store/slices/taskSlice";
 
 export default function TasksComponent() {
     const dispatch = useAppDispatch();
