@@ -23,7 +23,7 @@ export default function WeatherCard({ weather }: any) {
 
     return (
         <div>
-            <Card className="">
+            <Card>
                 <CardHeader className="flex gap-3">
                     <Image
                         alt="nextui logo"
