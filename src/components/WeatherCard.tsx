@@ -29,8 +29,7 @@ export default function WeatherCard({ weather }: any) {
                         alt="nextui logo"
                         height={80}
                         radius="sm"
-                        src="/sunny.jpeg"
-                        width={80}
+                        src={weather.current?.is_day ? "/sunny.jpeg" : "/night.jpeg"} width={80}
                     />
                     <div className="flex flex-col">
                         <h4 className="text-md">Rosario, Argentina.</h4>
@@ -48,7 +47,6 @@ export default function WeatherCard({ weather }: any) {
                     </div>
                 </CardBody>
             </Card>
-
         </div>
     )
 }
