@@ -1,9 +1,9 @@
 import '../globals.css'
-import { Montserrat } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import { Providers } from "../providers";
 import NavbarComponent from '@/components/Navbar';
 
-const montserrat = Montserrat({ subsets: ['latin'] })
+const poppins = Poppins({ weight: '400', subsets: ['latin'] })
 
 export const metadata = {
   title: 'Mokuteki',
@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='dark'>
-      <body className={montserrat.className} >
+      <body className={poppins.className} >
         <Providers>
           <NavbarComponent />
           {children}

@@ -69,7 +69,7 @@ export default function NavbarComponent() {
                         :
                         <div>
                             <NavbarItem>
-                                <Button as={Link} href="#" className="bg-gradient-to-tr from-primary to-secondary">
+                                <Button color="primary" as={Link} href="#">
                                     Sign Up
                                 </Button>
                             </NavbarItem>

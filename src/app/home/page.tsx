@@ -49,29 +49,14 @@ export default function Home() {
     init()
   }, [data, dispatch]);
 
-
-
-  const headerContent = () => {
-    const date = new Date();
-    const today = format(date, "EEEE d 'de' MMMM", { locale: es });
-
-    return (
-      <>
-        <h1 className="font-bold text-xl mb-2">Bienvenido</h1>
-        <h4 className="text-l text-default-500 capitalize">{today}</h4>
-      </>
-    )
-  }
-
   return (
     <main className="max-w-[600px] m-auto">
-      <HeaderComponent content={headerContent()} />
       {loading ?
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center my-20">
           <Spinner size="lg" />
         </div> :
         <div className="px-4">
-          <div className="w-full mb-10">
+          <div className="w-full mt-5 mb-10">
             <Link href={"/home/tasks"} className="flex justify-between items-center mb-2">
               <h1 className="text-left text-lg font-bold mb-2">Tareas</h1>
               <p className="text-sm">Ver mas</p>

@@ -81,10 +81,10 @@ export default function TaskModal({ isOpen, onOpenChange, handlePostRequest, tas
                             </Select>
                         </ModalBody>
                         <ModalFooter>
-                            {type == 'create' && <Button className="bg-gradient-to-tr from-primary to-secondary" fullWidth={true} onPress={() => handlePostRequest({ title, description, priority })}>
+                            {type == 'create' && <Button color="primary" fullWidth={true} onPress={() => handlePostRequest({ title, description, priority })}>
                                 Agregar
                             </Button>}
-                            {type == 'update' && <Button className="bg-gradient-to-tr from-primary to-secondary" fullWidth={true} onPress={() => handlePostRequest({ title, description, priority, _id: task?._id })}>
+                            {type == 'update' && <Button color="primary" fullWidth={true} onPress={() => handlePostRequest({ title, description, priority, _id: task?._id })}>
                                 Editar
                             </Button>}
                         </ModalFooter>

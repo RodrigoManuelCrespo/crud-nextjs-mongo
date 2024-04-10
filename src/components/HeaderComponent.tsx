@@ -9,7 +9,7 @@ interface Props {
 
 export default function HeaderComponent({ content }: Props) {
     return (
-        <Card className="rounded-t-none rounded-b-3xl px-6 py-8 mb-6">
+        <Card className="rounded-t-none px-6 py-8 mb-6">
             {content}
         </Card>
     );

@@ -28,17 +28,21 @@ module.exports = {
         dark: {
           layout: {}, // dark theme layout tokens
           colors: {
-            background: "#202020",
+            background: "#1F1D2B",
             foreground: "#ECEDEE", // or 50 to 900 DEFAULT
+            content1: {
+              foreground: "#ffffff",
+              DEFAULT: "#242837",
+            },
             primary: {
               //... 50 to 900
               foreground: "#ffffff",
-              DEFAULT: "#f00b51",
+              DEFAULT: "#FB7E22",
             },
             secondary: {
               //... 50 to 900
-              foreground: "##7A0061",
-              DEFAULT: "#7A0061",
+              foreground: "#7A0061",
+              DEFAULT: "#1F1D2B",
             },
           },
         },

@@ -8,12 +8,11 @@ export default function WeatherCard({ weather }: any) {
                 startContent={<Image
                     alt="nextui logo"
                     height={14}
-                    radius="sm"
                     src={image}
                     width={14}
                 />}
-                variant="solid"
                 color="primary"
+                radius="sm"
                 className="pl-2"
             >
                 <span className="text-white">{title}</span>
