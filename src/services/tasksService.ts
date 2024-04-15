@@ -18,7 +18,6 @@ export const postTask = async ({ title, description, priority }: TaskModel) => {
         });
 
         if (response.ok) {
-            console.log('Post successful!');
             toast.success("Tarea creada")
         } else {
             toast.error("Hubo un error, intente nuevamente en unos minutos")
@@ -54,7 +53,6 @@ export const deleteTask = async (id: string) => {
 
         if (response.ok) {
             toast.success("Tarea completada")
-            console.log('Delete successful!');
         } else {
             console.error('Error al realizar la solicitud:', response.status, response.statusText);
         }

@@ -10,8 +10,6 @@ export async function POST(request: Request) {
         await connectDB();
         const { email, password } = await request.json();
         const user = await User.findOne({ email }).select('+password');;
-        console.log(email, password);
-        console.log(user);
 
 
         if (!user) {
