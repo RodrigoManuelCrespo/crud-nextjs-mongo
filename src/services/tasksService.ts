@@ -1,5 +1,6 @@
 import { TaskModel } from "@/models/Task";
 import { getHeader } from "./apiService";
+import { toast } from "sonner";
 
 export const postTask = async ({ title, description, priority }: TaskModel) => {
     try {
@@ -18,7 +19,9 @@ export const postTask = async ({ title, description, priority }: TaskModel) => {
 
         if (response.ok) {
             console.log('Post successful!');
+            toast.success("Tarea creada")
         } else {
+            toast.error("Hubo un error, intente nuevamente en unos minutos")
             console.error('Error al realizar la solicitud:', response.status, response.statusText);
         }
     } catch (error) {
@@ -33,6 +36,7 @@ export const getTasks = async () => {
     const tasks = await res.json()
 
     if (!res.ok) {
+        toast.error("Hubo un error, intente nuevamente en unos minutos")
         throw new Error('Failed to fetch data')
     }
 
@@ -49,11 +53,13 @@ export const deleteTask = async (id: string) => {
         });
 
         if (response.ok) {
+            toast.success("Tarea completada")
             console.log('Delete successful!');
         } else {
             console.error('Error al realizar la solicitud:', response.status, response.statusText);
         }
     } catch (error) {
+        toast.error("Hubo un error, intente nuevamente en unos minutos")
         console.error('Error inesperado:', error);
     }
 };
@@ -73,8 +79,9 @@ export const updateTask = async ({ title, description, priority, _id }: TaskMode
         });
 
         if (response.ok) {
-            console.log('Edit successful!');
+            toast.success("Tarea actualizada")
         } else {
+            toast.error("Hubo un error, intente nuevamente en unos minutos")
             console.error('Error al realizar la solicitud:', response.status, response.statusText);
         }
     } catch (error) {

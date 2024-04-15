@@ -2,6 +2,7 @@ import '../globals.css'
 import { Poppins } from 'next/font/google'
 import { Providers } from "../providers";
 import NavbarComponent from '@/components/Navbar';
+import { Toaster } from 'sonner';
 
 const poppins = Poppins({ weight: '400', subsets: ['latin'] })
 
@@ -21,6 +22,14 @@ export default function RootLayout({
         <Providers>
           <NavbarComponent />
           {children}
+          <Toaster
+            position='bottom-center'
+            theme='dark'
+            toastOptions={{
+              style: { background: '#1F1D2B' },
+              className: 'my-toast',
+            }}
+          />
         </Providers>
       </body>
     </html>

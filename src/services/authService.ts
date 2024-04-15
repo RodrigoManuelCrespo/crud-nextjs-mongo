@@ -1,4 +1,5 @@
 import { UserModel } from "@/models/User";
+import { toast } from "sonner";
 
 export const postSignup = async ({ username, email, password }: UserModel) => {
     try {
@@ -18,6 +19,7 @@ export const postSignup = async ({ username, email, password }: UserModel) => {
         return response
 
     } catch (error) {
+        toast.error("Hubo un error, intente nuevamente en unos minutos")
         console.error('Error inesperado:', error);
     }
 };

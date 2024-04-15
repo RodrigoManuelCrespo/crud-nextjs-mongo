@@ -1,3 +1,4 @@
+import { error } from "console";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -25,7 +26,9 @@ const handler = NextAuth({
                 });
                 const user = await response.json()
 
-                if (user.error) throw user;
+                if (user.message == "User not found") {
+                    throw error
+                };
 
                 return user
             }
