@@ -14,6 +14,7 @@ export default function NavbarComponent() {
     const menuItems: Array<MenuItems> = [
         { title: "Inicio", url: '/home  ' },
         { title: "Tareas", url: '/home/tasks' },
+        { title: "Metas", url: '/home/goals' },
         { title: "Clima", url: '/home/weather' },
         { title: "Cerrar sesión", url: '/api/auth/signout' },
     ];
@@ -46,6 +47,11 @@ export default function NavbarComponent() {
                 <NavbarItem>
                     <Link color="foreground" href="/home/tasks">
                         Tareas
+                    </Link>
+                </NavbarItem>
+                <NavbarItem>
+                    <Link color="foreground" href="/home/goals">
+                        Metas
                     </Link>
                 </NavbarItem>
                 <NavbarItem >
