@@ -25,7 +25,7 @@ export default function TaskScreen() {
             <>
                 <h1 className="font-bold text-xl mb-2">Metas</h1>
                 <h1 className="text-l mb-8 text-default-500">
-                    ¿Sabías que al definir metas, aumentas tus posibilidades de éxito? Empecemos ahora mismo y hagamos que cada día cuente hacia tus metas
+                    ¿Sabías que al definir metas, aumentas tus posibilidades de éxito? Hagamos que cada día cuente hacia tus metas
                 </h1>
                 <Button color="primary" onPress={onOpen}>
                     <p>Agregar Meta</p>
@@ -35,7 +35,6 @@ export default function TaskScreen() {
                     onOpenChange={onOpenChange}
                     handlePostRequest={handlePostRequest}
                     titleModal="Crear Meta"
-                    type="create"
                 />
             </>
         )

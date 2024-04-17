@@ -66,7 +66,11 @@ export default function TasksComponent() {
                                         <div className="flex flex-col w-full">
                                             <div className="flex justify-between items-center mb-4">
                                                 <p className="text-md font-semibold">{task.title}</p>
-                                                <Chip color="primary" radius="sm" variant="bordered">
+                                                <Chip
+                                                    color={task.priority == "Baja" && 'success' || task.priority == "Media" && 'warning' || task.priority == "Alta" && 'danger' || 'default'}
+                                                    radius="sm"
+                                                    variant="bordered"
+                                                >
                                                     <p className="font-semibold text-[10px] uppercase">{task.priority}</p>
                                                 </Chip>
                                             </div>

@@ -62,7 +62,7 @@ export const deleteGoals = async (id: string) => {
     }
 };
 
-export const updateGoals = async ({ title, description, _id }: GoalModel) => {
+export const updateGoals = async ({ title, description, completed, _id }: GoalModel) => {
     try {
         const url = process.env.NEXT_PUBLIC_API_URL
         const headers = await getHeader()
@@ -72,6 +72,7 @@ export const updateGoals = async ({ title, description, _id }: GoalModel) => {
             body: JSON.stringify({
                 title,
                 description,
+                completed
             }),
         });
 

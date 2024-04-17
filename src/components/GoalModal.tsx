@@ -11,11 +11,10 @@ interface Props {
     handlePostRequest: (goal: GoalModel) => void;
     goal?: GoalModel;
     titleModal: string;
-    type: 'create' | 'update'
 }
 
 
-export default function GoalsModal({ isOpen, onOpenChange, handlePostRequest, goal, titleModal, type }: Props) {
+export default function GoalsModal({ isOpen, onOpenChange, handlePostRequest, goal, titleModal }: Props) {
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
 
@@ -61,12 +60,9 @@ export default function GoalsModal({ isOpen, onOpenChange, handlePostRequest, go
                             />
                         </ModalBody>
                         <ModalFooter>
-                            {type == 'create' && <Button color="primary" fullWidth={true} onPress={() => handlePostRequest({ title, description, completed: false })}>
+                            <Button color="primary" fullWidth={true} onPress={() => handlePostRequest({ title, description, completed: false })}>
                                 Agregar
-                            </Button>}
-                            {type == 'update' && <Button color="primary" fullWidth={true} onPress={() => handlePostRequest({ title, description, _id: goal?._id, completed: false })}>
-                                Editar
-                            </Button>}
+                            </Button>
                         </ModalFooter>
                     </>
                 )}
