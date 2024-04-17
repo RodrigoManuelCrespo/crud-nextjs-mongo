@@ -1,12 +1,8 @@
 'use client'
 
-import { deleteTask, getTasks, postTask, updateTask } from "@/services/tasksService";
 import { Card, CardHeader, CardFooter, Divider, Button, useDisclosure, Spinner } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
-import TaskModal from "./TaskModal";
-import { Chip } from "@nextui-org/react";
-import { setTasks } from "@/store/slices/taskSlice";
 import { deleteGoals, getGoals, updateGoals } from "@/services/goalsService";
 import { GoalModel } from "@/models/Goal";
 import { setGoals } from "@/store/slices/goalsSlice";
@@ -14,9 +10,9 @@ import GoalsModal from "./GoalModal";
 
 export default function GoalsComponent() {
     const dispatch = useAppDispatch();
-    const tasks = useAppSelector(state => state.tasks.tasks);
+    const goals = useAppSelector(state => state.goals.goals);
     const { isOpen, onClose, onOpen, onOpenChange } = useDisclosure();
-    const [newTask, setNewTask] = useState<GoalModel>({ title: '', description: '', completed: false, _id: '' });
+    const [newGoals, setNewGoals] = useState<GoalModel>({ title: '', description: '', completed: false, _id: '' });
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
@@ -25,7 +21,7 @@ export default function GoalsComponent() {
             try {
                 const goals = await getGoals();
                 console.log(goals);
-                dispatch(setGoals(tasks));
+                dispatch(setGoals(goals));
             } catch (error) {
                 console.error("Error al obtener datos:", error);
             }
@@ -37,19 +33,19 @@ export default function GoalsComponent() {
 
     const handleDeleteRequest = async (id: string | any) => {
         await deleteGoals(id);
-        const tasks = await getTasks();
-        dispatch(setGoals(tasks));
+        const goal = await getGoals();
+        dispatch(setGoals(goal));
     };
 
-    const handleUpdateRequest = async (task: GoalModel) => {
-        await updateGoals(task);
-        const tasks = await getTasks();
-        dispatch(setGoals(tasks));
+    const handleUpdateRequest = async (goal: GoalModel) => {
+        await updateGoals(goal);
+        const response = await getGoals();
+        dispatch(setGoals(response));
         onClose()
     };
 
-    const handleOpenModal = (task: GoalModel) => {
-        setNewTask(task)
+    const handleOpenModal = (goal: GoalModel) => {
+        setNewGoals(goal)
         onOpen()
     }
 
@@ -59,10 +55,10 @@ export default function GoalsComponent() {
                 <Spinner size="lg" />
             </div> :
             <div className="px-4">
-                {tasks.length > 0 &&
+                {goals.length > 0 &&
                     <>
                         <h1 className="font-semibold text-xl mb-5">Mis Tareas</h1>
-                        {tasks.map((task: GoalModel) => {
+                        {goals.map((task: GoalModel) => {
                             return (
                                 <Card className="border-none w-full mb-4"
                                     key={task._id}>
@@ -94,7 +90,7 @@ export default function GoalsComponent() {
                             isOpen={isOpen}
                             onOpenChange={onOpenChange}
                             handlePostRequest={handleUpdateRequest}
-                            task={newTask}
+                            goal={newGoals}
                             type={'update'}
                             titleModal={"Editar"}
                         />

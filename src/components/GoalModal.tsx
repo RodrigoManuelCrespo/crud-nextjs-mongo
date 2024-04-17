@@ -8,30 +8,28 @@ import { GoalModel } from "@/models/Goal";
 interface Props {
     isOpen: boolean | undefined;
     onOpenChange: () => void;
-    handlePostRequest: (task: GoalModel) => void;
-    task?: GoalModel;
+    handlePostRequest: (goal: GoalModel) => void;
+    goal?: GoalModel;
     titleModal: string;
     type: 'create' | 'update'
 }
 
 
-export default function GoalsModal({ isOpen, onOpenChange, handlePostRequest, task, titleModal, type }: Props) {
+export default function GoalsModal({ isOpen, onOpenChange, handlePostRequest, goal, titleModal, type }: Props) {
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
-    const [priority, setPriority] = useState<string>('');
 
     useEffect(() => {
-        if (task && isOpen) {
-            setTitle(task.title);
-            setDescription(task.description);
+        if (goal && isOpen) {
+            setTitle(goal.title);
+            setDescription(goal.description);
         }
 
         if (!isOpen) {
             setTitle('');
             setDescription('');
-            setPriority('')
         }
-    }, [task, isOpen]);
+    }, [goal, isOpen]);
 
     return (
         <Modal
@@ -62,14 +60,14 @@ export default function GoalsModal({ isOpen, onOpenChange, handlePostRequest, ta
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                         </ModalBody>
-                        {/* <ModalFooter>
-                            {type == 'create' && <Button color="primary" fullWidth={true} onPress={() => handlePostRequest({ title, description })}>
+                        <ModalFooter>
+                            {type == 'create' && <Button color="primary" fullWidth={true} onPress={() => handlePostRequest({ title, description, completed: false })}>
                                 Agregar
                             </Button>}
-                            {type == 'update' && <Button color="primary" fullWidth={true} onPress={() => handlePostRequest({ title, description, _id: task?._id })}>
+                            {type == 'update' && <Button color="primary" fullWidth={true} onPress={() => handlePostRequest({ title, description, _id: goal?._id, completed: false })}>
                                 Editar
                             </Button>}
-                        </ModalFooter> */}
+                        </ModalFooter>
                     </>
                 )}
             </ModalContent>

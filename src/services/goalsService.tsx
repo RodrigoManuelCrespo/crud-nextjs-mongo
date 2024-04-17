@@ -1,9 +1,8 @@
-import { TaskModel } from "@/models/Task";
 import { getHeader } from "./apiService";
 import { toast } from "sonner";
 import { GoalModel } from "@/models/Goal";
 
-export const postGoals = async ({ title, description }: GoalModel) => {
+export const postGoals = async ({ title, description, completed }: GoalModel) => {
     try {
         const url = process.env.NEXT_PUBLIC_API_URL
         const headers = await getHeader()
