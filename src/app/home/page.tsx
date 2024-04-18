@@ -17,20 +17,23 @@ import { TaskModel } from "@/models/Task";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { getGoals } from "@/services/goalsService";
+import { setGoals } from "@/store/slices/goalsSlice";
+import { GoalModel } from "@/models/Goal";
 
 export default function Home() {
   const [loading, setLoading] = useState(false)
   const dispatch = useAppDispatch();
   const tasks = useAppSelector(state => state.tasks.tasks);
+  const goals = useAppSelector(state => state.goals.goals);
   const weather: any = useAppSelector(state => state.weather.weather);
   const { data } = useSession()
+
   const settings = {
-    className: "center",
     centerMode: true,
     arrows: false,
     infinite: true,
     slidesToShow: 1,
-    speed: 500
   };
 
   useEffect(() => {
@@ -40,6 +43,8 @@ export default function Home() {
         saveTokenToLocalStorage(data);
         const tasks = await getTasks();
         dispatch(setTasks(tasks));
+        const goals = await getGoals();
+        dispatch(setGoals(goals));
         const weather = await getWeather();
         dispatch(setWeather(weather));
       }
@@ -56,27 +61,57 @@ export default function Home() {
           <Spinner size="lg" />
         </div> :
         <div className="px-4">
-          <div className="w-full mt-5 mb-10">
-            <Link href={"/home/tasks"} className="flex justify-between items-center mb-2">
-              <h1 className="text-left text-lg font-bold mb-2">Tareas</h1>
-              <p className="text-sm">Ver mas</p>
-            </Link>
-            <Slider {...settings}>
-              {tasks.length > 0 && tasks.map((item: TaskModel) => {
-                return (
-                  <div key={item._id}>
-                    <Card className="flex mr-2">
-                      <CardBody>
-                        <h2 className="font-semibold py-2">{item.title}</h2>
-                        <h2 className="text-default-500 py-2 truncate">{item.description}</h2>
-                      </CardBody>
-                    </Card>
-                  </div>
-                )
-              })
-              }
-            </Slider>
-          </div>
+
+          {/* Tasks */}
+          {tasks.length > 1 &&
+            <div className="w-full mt-5 mb-10">
+              <Link href={"/home/tasks"} className="flex justify-between items-center mb-2">
+                <h1 className="text-left text-lg font-bold mb-2">Tareas</h1>
+                <p className="text-sm">Ver mas</p>
+              </Link>
+              <Slider {...settings}>
+                {tasks.map((item: TaskModel) => {
+                  return (
+                    <div key={item._id}>
+                      <Card className="flex mr-2">
+                        <CardBody>
+                          <h2 className="font-semibold py-2">{item.title}</h2>
+                          <h2 className="text-default-500 py-2 truncate">{item.description}</h2>
+                        </CardBody>
+                      </Card>
+                    </div>
+                  )
+                })
+                }
+              </Slider>
+            </div>
+          }
+
+          {/* Goals */}
+          {goals.length > 1 &&
+            <div className="w-full mt-5 mb-10">
+              <Link href={"/home/goals"} className="flex justify-between items-center mb-2">
+                <h1 className="text-left text-lg font-bold mb-2">Metas</h1>
+                <p className="text-sm">Ver mas</p>
+              </Link>
+              <Slider {...settings}>
+                {goals.length > 1 && goals.map((item: GoalModel) => {
+                  return (
+                    <div key={item._id}>
+                      <Card className="flex mr-2">
+                        <CardBody>
+                          <h2 className="font-semibold py-2">{item.title}</h2>
+                          <h2 className="text-default-500 py-2 truncate">{item.description}</h2>
+                        </CardBody>
+                      </Card>
+                    </div>
+                  )
+                })}
+              </Slider>
+            </div>
+          }
+
+          {/* Weather */}
           <div className="w-full mb-10">
             <Link href={"/home/weather"} className="flex justify-between items-center mb-2">
               <h1 className="text-left text-lg font-bold mb-2">Clima</h1>
